@@ -11,13 +11,22 @@ from datetime import timedelta
 import logging
 
 from config import settings
-from database import Base, engine, get_db
+from database import Base, engine, get_db, redis_client
 from models import User, Organization, UserRole
-from auth import create_access_token, verify_password, get_password_hash
+from auth import create_access_token, verify_password, get_password_hash, get_current_user
 
 # Import routers
 from ai_coach.routes import router as coach_router
 from burnout_ml.routes import router as burnout_router
+from admin.routes import router as admin_router
+from gdpr.routes import router as gdpr_router
+
+# Import middleware
+from middleware.rate_limiter import RateLimitMiddleware
+
+# Import monitoring
+from monitoring.metrics import setup_metrics
+from prometheus_client import make_asgi_app
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -40,9 +49,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Rate limiting middleware
+app.add_middleware(RateLimitMiddleware, redis_client=redis_client)
+
+# Setup Prometheus metrics
+setup_metrics(app)
+
+# Mount Prometheus metrics endpoint
+metrics_app = make_asgi_app()
+app.mount("/metrics", metrics_app)
+
 # Include routers
 app.include_router(coach_router)
 app.include_router(burnout_router)
+app.include_router(admin_router)
+app.include_router(gdpr_router)
 
 # Logging
 logging.basicConfig(level=logging.INFO)
@@ -211,7 +232,7 @@ async def login(
 
 @app.get("/api/auth/me", response_model=UserResponse)
 async def get_current_user_info(
-    current_user: User = Depends(lambda: __import__('auth').get_current_user)
+    current_user: User = Depends(get_current_user)
 ):
     """Get current user information"""
     return UserResponse(

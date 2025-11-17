@@ -69,11 +69,10 @@ textblob==0.17.1
 nltk==3.8.1
 
 # HTTP Client
-httpx==0.26.0
 aiohttp==3.9.1
+requests==2.31.0
 
 # Async
-asyncio==3.4.3
 asyncpg==0.29.0
 
 # Logging
