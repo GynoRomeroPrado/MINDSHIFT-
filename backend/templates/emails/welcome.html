@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to MindShift</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .content {
+            padding: 40px 30px;
+        }
+        .button {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: #667eea;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+        .feature {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #f9fafb;
+            border-radius: 8px;
+        }
+        .feature-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        .footer {
+            background-color: #f9fafb;
+            padding: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Welcome to MindShift! 🎉</h1>
+            <p>Your journey to better workplace wellbeing starts here</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <p>Hi {{ user_name }},</p>
+
+            <p>Welcome to MindShift! We're excited to have you as part of our community focused on workplace mental health and wellbeing.</p>
+
+            <p>MindShift is your personal mental health companion, powered by AI to provide 24/7 support, insights, and interventions to help you thrive at work.</p>
+
+            <div style="text-align: center;">
+                <a href="{{ app_url }}/dashboard" class="button">Get Started →</a>
+            </div>
+
+            <h2 style="margin-top: 40px;">What You Can Do</h2>
+
+            <div class="feature">
+                <div class="feature-icon">💬</div>
+                <h3>Talk to Your AI Coach</h3>
+                <p>Get instant support from our AI mental health coach trained in CBT and DBT techniques. Available 24/7 whenever you need someone to talk to.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>Daily Check-ins</h3>
+                <p>Track your mood, energy, stress, and workload with quick daily check-ins. Build self-awareness and identify patterns over time.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <h3>Personalized Insights</h3>
+                <p>Receive personalized burnout risk assessments and actionable recommendations to maintain your wellbeing.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <h3>Private & Confidential</h3>
+                <p>All your conversations are encrypted and confidential. Your data is never shared with your employer without aggregation.</p>
+            </div>
+
+            <h2 style="margin-top: 40px;">Get the Most Out of MindShift</h2>
+
+            <ol>
+                <li><strong>Complete Your Profile:</strong> Add your preferences to get personalized support</li>
+                <li><strong>Daily Check-ins:</strong> Take 2 minutes each day to check in with yourself</li>
+                <li><strong>Talk to Your Coach:</strong> Start a conversation whenever you need support</li>
+                <li><strong>Explore Resources:</strong> Check out our library of mental health resources</li>
+            </ol>
+
+            <div style="background-color: #e0e7ff; padding: 20px; border-radius: 8px; margin: 30px 0;">
+                <h3 style="margin-top: 0;">🆘 Crisis Support</h3>
+                <p style="margin-bottom: 0;">If you're experiencing a mental health crisis, please reach out immediately:</p>
+                <ul>
+                    <li><strong>National Suicide & Crisis Lifeline:</strong> 988</li>
+                    <li><strong>Crisis Text Line:</strong> Text HELLO to 741741</li>
+                    <li><strong>Emergency:</strong> 911</li>
+                </ul>
+            </div>
+
+            <p>We're here to support you every step of the way. If you have any questions, don't hesitate to reach out.</p>
+
+            <p>Here's to your wellbeing!</p>
+
+            <p>
+                <strong>The MindShift Team</strong><br>
+                <a href="mailto:support@mindshift.ai">support@mindshift.ai</a>
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>
+                <a href="{{ app_url }}/dashboard">Dashboard</a> |
+                <a href="{{ app_url }}/settings">Settings</a> |
+                <a href="https://docs.mindshift.ai">Help Center</a>
+            </p>
+            <p style="margin-top: 20px;">
+                MindShift - AI-Powered Workplace Mental Health<br>
+                © 2025 MindShift Inc. All rights reserved.
+            </p>
+            <p style="font-size: 12px; color: #999; margin-top: 20px;">
+                This email was sent to {{ user_email }}<br>
+                <a href="{{ app_url }}/unsubscribe">Unsubscribe</a> | <a href="{{ app_url }}/privacy">Privacy Policy</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
